@@ -1,0 +1,30 @@
+### create
+POST http://localhost:8080/schedule/save
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+### find all
+GET http://localhost:8080/schedule/find
+
+### find by id
+GET http://localhost:8080/schedule/find/1
+
+### update
+PUT http://localhost:8080/schedule/update/1
+Content-Type: application/json
+
+{
+  "title": "nodejs 공부",
+  "content": "node란 무엇일까"
+}
+
+### change status
+PUT http://localhost:8080/schedule/change/1
+
+### delete
+DELETE http://localhost:8080/schedule/delete/1
