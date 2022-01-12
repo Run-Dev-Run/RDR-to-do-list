@@ -2,14 +2,11 @@ package com.rdr.todolist.schedule.domain;
 
 import com.rdr.todolist.common.domain.BaseEntity;
 import com.rdr.todolist.schedule.domain.vo.Status;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
-@Builder
 @Getter
 @Entity
 public class Schedule extends BaseEntity {
@@ -31,6 +28,14 @@ public class Schedule extends BaseEntity {
     @Column(name = "SCHEDULE_CONTENT")
     private String content;
 
+    @Builder
+    private Schedule(String author, String title, String content) {
+        this.author = author;
+        this.status = Status.TODO;
+        this.title = title;
+        this.content = content;
+    }
+
     protected Schedule() {
     }
 
@@ -45,9 +50,5 @@ public class Schedule extends BaseEntity {
 
     public void changeStatus() {
         this.status = Status.change(this.status);
-    }
-
-    public boolean isDelete() {
-        return this.status.equals(Status.DELETED);
     }
 }

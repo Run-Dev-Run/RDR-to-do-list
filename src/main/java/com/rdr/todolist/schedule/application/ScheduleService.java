@@ -1,6 +1,7 @@
 package com.rdr.todolist.schedule.application;
 
 import com.rdr.todolist.common.exception.ErrorMessage;
+import com.rdr.todolist.schedule.converter.ScheduleConverter;
 import com.rdr.todolist.schedule.domain.Schedule;
 import com.rdr.todolist.schedule.domain.vo.Status;
 import com.rdr.todolist.schedule.dto.bundle.ScheduleCreateBundle;
@@ -11,39 +12,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
+    private final ScheduleConverter scheduleConverter;
 
     @Transactional
     public void create(ScheduleCreateBundle bundle) {
-        Schedule schedule = Schedule.builder()
-                .author(bundle.getAuthor())
-                .status(Status.TODO)
-                .title(bundle.getTitle())
-                .content(bundle.getContent())
-                .build();
-        scheduleRepository.save(schedule);
+        scheduleRepository.save(
+                scheduleConverter.toSchedule(bundle)
+        );
     }
 
+    @Transactional(readOnly = true)
     public List<Schedule> find() {
-        return scheduleRepository.findAll()
-                .stream()
-                .filter(schedule -> !schedule.getStatus().equals(Status.DELETED))
-                .collect(Collectors.toList());
+        return scheduleRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Schedule find(Long scheduleId) {
-        Schedule schedule = scheduleRepository.findById(scheduleId)
-                .orElseThrow(() -> new RuntimeException(ErrorMessage.SCHEDULE_DOES_NOT_EXIST.toString()));
-
-        if (schedule.isDelete()) {
-            throw new RuntimeException(ErrorMessage.DELETED_SCHEDULE.toString());
-        }
-        return schedule;
+        return scheduleRepository.findById(scheduleId)
+                .orElseThrow(() -> new RuntimeException(ErrorMessage.SCHEDULE_DOES_NOT_EXIST.name()));
     }
 
     @Transactional

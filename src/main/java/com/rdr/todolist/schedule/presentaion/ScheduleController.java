@@ -1,6 +1,7 @@
 package com.rdr.todolist.schedule.presentaion;
 
 import com.rdr.todolist.schedule.application.ScheduleService;
+import com.rdr.todolist.schedule.converter.ScheduleConverter;
 import com.rdr.todolist.schedule.dto.bundle.ScheduleCreateBundle;
 import com.rdr.todolist.schedule.dto.bundle.ScheduleUpdateBundle;
 import com.rdr.todolist.schedule.dto.request.ScheduleCreateRequest;
@@ -11,42 +12,43 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/schedule")
+@RequestMapping("/v1/schedules")
 @RestController
 public class ScheduleController {
     private final ScheduleService scheduleService;
+    private final ScheduleConverter scheduleConverter;
 
-    @PostMapping("/save")
-    public String save(@RequestBody ScheduleCreateRequest request) {
-        ScheduleCreateBundle bundle = ScheduleCreateBundle.convertFrom(request);
+    @PostMapping
+    public String create(@RequestBody ScheduleCreateRequest request) {
+        ScheduleCreateBundle bundle = scheduleConverter.toScheduleCreateBundle(request);
         scheduleService.create(bundle);
         return HttpStatus.CREATED.toString();
     }
 
-    @GetMapping("/find")
+    @GetMapping
     public ResponseEntity<?> find() {
         return new ResponseEntity<>(scheduleService.find(), HttpStatus.FOUND);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
         return new ResponseEntity<>(scheduleService.find(id), HttpStatus.FOUND);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public String update(@PathVariable Long id, @RequestBody ScheduleUpdateRequest request) {
-        ScheduleUpdateBundle bundle = ScheduleUpdateBundle.convertFrom(id, request);
+        ScheduleUpdateBundle bundle = scheduleConverter.toScheduleUpdateBundle(id, request);
         scheduleService.update(bundle);
         return HttpStatus.OK.toString();
     }
 
-    @PutMapping("/change/{id}")
+    @PatchMapping("/{id}")
     public String changeStatus(@PathVariable Long id) {
         scheduleService.changeStatus(id);
         return HttpStatus.OK.toString();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id) {
         scheduleService.delete(id);
         return HttpStatus.OK.toString();

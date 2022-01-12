@@ -1,5 +1,5 @@
 ### create
-POST http://localhost:8080/schedule/save
+POST http://localhost:8080/v1/schedules
 Content-Type: application/json
 
 {
@@ -9,13 +9,13 @@ Content-Type: application/json
 }
 
 ### find all
-GET http://localhost:8080/schedule/find
+GET http://localhost:8080/v1/schedules
 
 ### find by id
-GET http://localhost:8080/schedule/find/1
+GET http://localhost:8080/v1/schedules/1
 
 ### update
-PUT http://localhost:8080/schedule/update/1
+PUT http://localhost:8080/v1/schedules/1
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### change status
-PUT http://localhost:8080/schedule/change/1
+PATCH http://localhost:8080/v1/schedules/2
 
 ### delete
-DELETE http://localhost:8080/schedule/delete/1
+DELETE http://localhost:8080/v1/schedules/3
