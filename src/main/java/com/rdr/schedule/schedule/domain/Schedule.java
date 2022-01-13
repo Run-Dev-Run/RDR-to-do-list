@@ -28,15 +28,15 @@ public class Schedule extends BaseEntity {
     @Column(name = "SCHEDULE_CONTENT")
     private String content;
 
+    protected Schedule() {
+    }
+
     @Builder
     private Schedule(String author, String title, String content) {
         this.author = author;
         this.status = Status.TODO;
         this.title = title;
         this.content = content;
-    }
-
-    protected Schedule() {
     }
 
     public Schedule update(String title, String content) {

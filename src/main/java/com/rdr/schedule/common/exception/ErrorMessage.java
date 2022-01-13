@@ -1,7 +1,9 @@
 package com.rdr.schedule.common.exception;
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+@Getter
 public enum ErrorMessage {
     SCHEDULE_DOES_NOT_EXIST("E-S-001", HttpStatus.NOT_FOUND),
     ;
