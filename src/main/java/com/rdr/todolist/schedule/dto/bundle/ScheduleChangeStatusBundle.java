@@ -7,17 +7,18 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
-public class ScheduleCreateBundle {
-    private ScheduleCreateBundle() {
+public class ScheduleChangeStatusBundle {
+    private ScheduleChangeStatusBundle() {
     }
 
     @RequiredArgsConstructor
-    @Builder
     @Getter
     public static class Request {
-        private final String author;
-        private final String title;
-        private final String content;
+        private final Long id;
+
+        public static Request of(Long id) {
+            return new Request(id);
+        }
     }
 
     @RequiredArgsConstructor

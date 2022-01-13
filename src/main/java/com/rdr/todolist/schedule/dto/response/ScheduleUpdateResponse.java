@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Builder
 @Getter
-public class ScheduleResponse {
+public class ScheduleUpdateResponse {
     private final String author;
     private final Status status;
     private final String title;
