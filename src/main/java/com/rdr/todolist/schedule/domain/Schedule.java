@@ -39,16 +39,19 @@ public class Schedule extends BaseEntity {
     protected Schedule() {
     }
 
-    public void update(String title, String content) {
+    public Schedule update(String title, String content) {
         this.title = title;
         this.content = content;
+        return this;
     }
 
-    public void delete() {
+    public Schedule delete() {
         this.status = Status.DELETED;
+        return this;
     }
 
-    public void changeStatus() {
+    public Schedule changeStatus() {
         this.status = Status.change(this.status);
+        return this;
     }
 }

@@ -4,7 +4,8 @@ public enum Status {
     TODO,
     DOING,
     DONE,
-    DELETED;
+    DELETED,
+    ;
 
     public static Status change(Status status) {
         if (status.equals(Status.TODO)) {
