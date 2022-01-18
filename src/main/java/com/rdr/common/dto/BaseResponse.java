@@ -8,12 +8,14 @@ import java.time.LocalDateTime;
 @Getter
 public class BaseResponse<T> {
     private final LocalDateTime localDateTime;
-    private final ResponseMessage message;
+    private final String message;
+    private final String code;
     private final T result;
 
     public BaseResponse(ResponseMessage message, T result) {
         this.localDateTime = LocalDateTime.now();
-        this.message = message;
+        this.message = message.name();
+        this.code = message.getCode();
         this.result = result;
     }
 
