@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @Api("Diary")
 @RequestMapping("/v1/diaries")
@@ -22,7 +24,7 @@ public class DiaryController {
 
     @ApiOperation("Diary 생성")
     @PostMapping
-    public ResponseEntity<BaseResponse<DiaryCreateDto.Response>> create(@RequestBody DiaryCreateDto.Request request) {
+    public ResponseEntity<BaseResponse<DiaryCreateDto.Response>> create(@Valid @RequestBody DiaryCreateDto.Request request) {
         DiaryCreateBundle.Request bundleRequest = diaryConverter.toDiaryCreateBundleRequest(request);
         DiaryCreateBundle.Response bundleResponse = diaryService.create(bundleRequest);
 
