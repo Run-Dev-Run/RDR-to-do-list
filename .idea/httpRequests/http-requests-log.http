@@ -1,0 +1,477 @@
+GET http://localhost:8080/v1/diaries
+
+<> 2022-01-18T153341.302.json
+
+###
+
+GET http://localhost:8080/v1/diaries/1
+
+<> 2022-01-18T153335.302.json
+
+###
+
+PUT http://localhost:8080/v1/diaries/1
+Content-Type: application/json
+
+{
+  "title": "nodejs 공부",
+  "content": "node란 무엇일까"
+}
+
+<> 2022-01-18T153328.200.json
+
+###
+
+PATCH http://localhost:8080/v1/diaries/2
+
+<> 2022-01-18T153318.200.json
+
+###
+
+DELETE http://localhost:8080/v1/diaries/3
+
+<> 2022-01-18T153309.200.json
+
+###
+
+POST http://localhost:8080/v1/diaries
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-18T153305.201.json
+
+###
+
+POST http://localhost:8080/v1/diaries
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-18T153301.201.json
+
+###
+
+POST http://localhost:8080/v1/diaries
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-18T153257.201.json
+
+###
+
+GET http://localhost:8080/v1/diaries/1
+
+<> 2022-01-15T232143.200.json
+
+###
+
+GET http://localhost:8080/v1/diaries
+
+<> 2022-01-15T232137.200.json
+
+###
+
+PUT http://localhost:8080/v1/diaries/1
+Content-Type: application/json
+
+{
+  "title": "nodejs 공부",
+  "content": "node란 무엇일까"
+}
+
+<> 2022-01-15T232133.200.json
+
+###
+
+PATCH http://localhost:8080/v1/diaries/2
+
+<> 2022-01-15T232128.200.json
+
+###
+
+DELETE http://localhost:8080/v1/diaries/3
+
+<> 2022-01-15T232126.200.json
+
+###
+
+POST http://localhost:8080/v1/diaries
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-15T232122.200.json
+
+###
+
+POST http://localhost:8080/v1/diaries
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-15T232120.200.json
+
+###
+
+POST http://localhost:8080/v1/diaries
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-15T232117.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T233239.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T233124.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T170503.200.json
+
+###
+
+PUT http://localhost:8080/v1/schedules/1
+Content-Type: application/json
+
+{
+  "title": "nodejs 공부",
+  "content": "node란 무엇일까"
+}
+
+<> 2022-01-13T170455.200.json
+
+###
+
+PATCH http://localhost:8080/v1/schedules/2
+
+<> 2022-01-13T170452.200.json
+
+###
+
+PATCH http://localhost:8080/v1/schedules/2
+
+<> 2022-01-13T170450.200.json
+
+###
+
+DELETE http://localhost:8080/v1/schedules/3
+
+<> 2022-01-13T170449.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules/1
+
+<> 2022-01-13T170444.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T170436.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T170432.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T170431.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T170423.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T165844.200.json
+
+###
+
+PUT http://localhost:8080/v1/schedules/1
+Content-Type: application/json
+
+{
+  "title": "nodejs 공부",
+  "content": "node란 무엇일까"
+}
+
+<> 2022-01-13T165829.500.json
+
+###
+
+DELETE http://localhost:8080/v1/schedules/3
+
+<> 2022-01-13T165823.500.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T165819.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T165815.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T165810.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T164600.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules/1
+
+<> 2022-01-13T164555.200.json
+
+###
+
+PUT http://localhost:8080/v1/schedules/1
+Content-Type: application/json
+
+{
+  "title": "nodejs 공부",
+  "content": "node란 무엇일까"
+}
+
+<> 2022-01-13T164550.200.json
+
+###
+
+PATCH http://localhost:8080/v1/schedules/2
+
+<> 2022-01-13T164543.200.json
+
+###
+
+DELETE http://localhost:8080/v1/schedules/3
+
+<> 2022-01-13T164538.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T164535.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T164528.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T164525.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T164521.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T161555.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T161551.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T161548.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T161158.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T161156.200.json
+
+###
+
+POST http://localhost:8080/v1/schedules
+Content-Type: application/json
+
+{
+  "author": "이희찬",
+  "title": "spring 공부",
+  "content": "API 테스트해보기"
+}
+
+<> 2022-01-13T161151.200.json
+
+###
+
+GET http://localhost:8080/v1/schedules
+
+<> 2022-01-13T160839.200.json
+
+###
+

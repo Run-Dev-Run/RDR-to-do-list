@@ -3,10 +3,11 @@ package com.rdr.diary.presentaion;
 import com.rdr.common.dto.BaseResponse;
 import com.rdr.common.dto.ResponseMessage;
 import com.rdr.diary.application.DiaryService;
-import com.rdr.diary.bundle.*;
 import com.rdr.diary.converter.DiaryConverter;
 import com.rdr.diary.dto.*;
+import com.rdr.diary.dto.bundle.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ public class DiaryController {
     private final DiaryConverter diaryConverter;
 
     @PostMapping
-    public BaseResponse<DiaryCreateDto.Response> create(@RequestBody DiaryCreateDto.Request request) {
+    public ResponseEntity<BaseResponse<DiaryCreateDto.Response>> create(@RequestBody DiaryCreateDto.Request request) {
         DiaryCreateBundle.Request bundleRequest = diaryConverter.toDiaryCreateBundleRequest(request);
         DiaryCreateBundle.Response bundleResponse = diaryService.create(bundleRequest);
 
@@ -26,7 +27,7 @@ public class DiaryController {
     }
 
     @GetMapping
-    public BaseResponse<DiaryFindAllDto.Response> find() {
+    public ResponseEntity<BaseResponse<DiaryFindAllDto.Response>> find() {
         DiaryGetCountBundle.Response countBundleResponse = diaryService.getCount();
         DiaryFindAllBundle.Response diariesBundleResponse = diaryService.find();
 
@@ -35,7 +36,7 @@ public class DiaryController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<DiaryFindDto.Response> find(@PathVariable Long id) {
+    public ResponseEntity<BaseResponse<DiaryFindDto.Response>> find(@PathVariable Long id) {
         DiaryFindBundle.Request bundleRequest = DiaryFindBundle.Request.of(id);
         DiaryFindBundle.Response bundleResponse = diaryService.find(bundleRequest);
 
@@ -44,7 +45,7 @@ public class DiaryController {
     }
 
     @PutMapping("/{id}")
-    public BaseResponse<DiaryUpdateDto.Response> update(@PathVariable Long id, @RequestBody DiaryUpdateDto.Request request) {
+    public ResponseEntity<BaseResponse<DiaryUpdateDto.Response>> update(@PathVariable Long id, @RequestBody DiaryUpdateDto.Request request) {
         DiaryUpdateBundle.Request bundleRequest = diaryConverter.toDiaryUpdateBundleRequest(id, request);
         DiaryUpdateBundle.Response bundleResponse = diaryService.update(bundleRequest);
 
@@ -53,7 +54,7 @@ public class DiaryController {
     }
 
     @PatchMapping("/{id}")
-    public BaseResponse<DiaryUpdateStatusDto.Response> updateStatus(@PathVariable Long id) {
+    public ResponseEntity<BaseResponse<DiaryUpdateStatusDto.Response>> updateStatus(@PathVariable Long id) {
         DiaryUpdateStatusBundle.Request bundleRequest = DiaryUpdateStatusBundle.Request.of(id);
         DiaryUpdateStatusBundle.Response bundleResponse = diaryService.updateStatus(bundleRequest);
 
@@ -62,7 +63,7 @@ public class DiaryController {
     }
 
     @DeleteMapping("/{id}")
-    public BaseResponse<DiaryDeleteDto.Response> delete(@PathVariable Long id) {
+    public ResponseEntity<BaseResponse<DiaryDeleteDto.Response>> delete(@PathVariable Long id) {
         DiaryDeleteBundle.Request bundleRequest = DiaryDeleteBundle.Request.of(id);
         DiaryDeleteBundle.Response bundleResponse = diaryService.delete(bundleRequest);
 

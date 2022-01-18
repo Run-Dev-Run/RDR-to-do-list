@@ -1,6 +1,6 @@
 package com.rdr.diary.dto;
 
-import com.rdr.diary.bundle.DiaryFindBundle;
+import com.rdr.diary.dto.bundle.DiaryFindBundle;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

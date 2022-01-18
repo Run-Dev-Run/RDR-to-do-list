@@ -3,7 +3,7 @@ package com.rdr.diary.application;
 import com.rdr.common.exception.ErrorMessage;
 import com.rdr.diary.converter.DiaryConverter;
 import com.rdr.diary.domain.Diary;
-import com.rdr.diary.bundle.*;
+import com.rdr.diary.dto.bundle.*;
 import com.rdr.diary.infrastructure.DiaryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

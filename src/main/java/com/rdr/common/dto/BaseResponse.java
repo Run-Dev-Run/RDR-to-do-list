@@ -1,6 +1,7 @@
 package com.rdr.common.dto;
 
 import lombok.Getter;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +17,9 @@ public class BaseResponse<T> {
         this.result = result;
     }
 
-    public static <T> BaseResponse<T> of(ResponseMessage msg, T result) {
-        return new BaseResponse<>(msg, result);
+    public static <T> ResponseEntity<BaseResponse<T>> of(ResponseMessage message, T result) {
+        return ResponseEntity
+                .status(message.getStatus())
+                .body(new BaseResponse<>(message, result));
     }
 }

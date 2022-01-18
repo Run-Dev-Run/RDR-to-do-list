@@ -1,4 +1,4 @@
-package com.rdr.diary.bundle;
+package com.rdr.diary.dto.bundle;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.rdr.diary.bundle;
+package com.rdr.diary.dto.bundle;
 
 import com.rdr.diary.domain.vo.Status;
 import lombok.Builder;
@@ -7,17 +7,18 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
-public class DiaryCreateBundle {
-    private DiaryCreateBundle() {
+public class DiaryDeleteBundle {
+    private DiaryDeleteBundle() {
     }
 
     @RequiredArgsConstructor
-    @Builder
     @Getter
     public static class Request {
-        private final String author;
-        private final String title;
-        private final String content;
+        private final Long id;
+
+        public static Request of(Long id) {
+            return new Request(id);
+        }
     }
 
     @RequiredArgsConstructor
