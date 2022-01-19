@@ -15,25 +15,24 @@ import java.util.List;
 @Service
 public class DiaryService {
     private final DiaryRepository diaryRepository;
-    private final DiaryConverter diaryConverter;
 
     @Transactional
     public DiaryCreateBundle.Response create(DiaryCreateBundle.Request requestBundle) {
-        Diary diary = diaryRepository.save(diaryConverter.toDiary(requestBundle));
-        return diaryConverter.toDiaryCreateBundleResponse(diary);
+        Diary diary = diaryRepository.save(DiaryConverter.toDiary(requestBundle));
+        return DiaryConverter.toDiaryCreateBundleResponse(diary);
     }
 
     @Transactional(readOnly = true)
     public DiaryFindAllBundle.Response find() {
         List<Diary> diaries = diaryRepository.findAll();
-        return diaryConverter.toDiaryFindAllBundleResponse(diaries);
+        return DiaryConverter.toDiaryFindAllBundleResponse(diaries);
     }
 
     @Transactional(readOnly = true)
     public DiaryFindBundle.Response find(DiaryFindBundle.Request requestBundle) {
         Diary diary = diaryRepository.findById(requestBundle.getId())
                 .orElseThrow(() -> new RuntimeException(ErrorMessage.DIARY_DOES_NOT_EXIST.name()));
-        return diaryConverter.toDiaryFindBundleResponse(diary);
+        return DiaryConverter.toDiaryFindBundleResponse(diary);
     }
 
     @Transactional(readOnly = true)
@@ -47,7 +46,7 @@ public class DiaryService {
         Diary diary = diaryRepository.findById(requestBundle.getId())
                 .orElseThrow(() -> new RuntimeException(ErrorMessage.DIARY_DOES_NOT_EXIST.name()))
                 .update(requestBundle.getTitle(), requestBundle.getContent());
-        return diaryConverter.toDiaryUpdateBundleResponse(diary);
+        return DiaryConverter.toDiaryUpdateBundleResponse(diary);
     }
 
     @Transactional
@@ -55,7 +54,7 @@ public class DiaryService {
         Diary diary = diaryRepository.findById(requestBundle.getId())
                 .orElseThrow(() -> new RuntimeException(ErrorMessage.DIARY_DOES_NOT_EXIST.name()))
                 .updateStatus();
-        return diaryConverter.toDiaryUpdateStatusBundleResponse(diary);
+        return DiaryConverter.toDiaryUpdateStatusBundleResponse(diary);
     }
 
     @Transactional
@@ -63,6 +62,6 @@ public class DiaryService {
         Diary diary = diaryRepository.findById(requestBundle.getId())
                 .orElseThrow(() -> new RuntimeException(ErrorMessage.DIARY_DOES_NOT_EXIST.name()))
                 .delete();
-        return diaryConverter.toDiaryDeleteBundleResponse(diary);
+        return DiaryConverter.toDiaryDeleteBundleResponse(diary);
     }
 }

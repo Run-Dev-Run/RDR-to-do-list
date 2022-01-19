@@ -1,6 +1,5 @@
 package com.rdr.diary.dto;
 
-import com.rdr.diary.dto.bundle.DiaryFindBundle;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +13,6 @@ public class DiaryFindAllDto {
     @Getter
     public static class Response {
         private final Long totalCount;
-        private final List<DiaryFindBundle.Response> diaries;
+        private final List<DiaryFindDto.Response> diaries;
     }
 }

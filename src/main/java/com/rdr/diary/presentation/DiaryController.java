@@ -16,19 +16,18 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @Api("Diary")
-@RequestMapping("/v1/diaries")
+@RequestMapping("api/v1/diaries")
 @RestController
 public class DiaryController {
     private final DiaryService diaryService;
-    private final DiaryConverter diaryConverter;
 
     @ApiOperation("Diary 생성")
     @PostMapping
     public ResponseEntity<BaseResponse<DiaryCreateDto.Response>> create(@Valid @RequestBody DiaryCreateDto.Request request) {
-        DiaryCreateBundle.Request bundleRequest = diaryConverter.toDiaryCreateBundleRequest(request);
+        DiaryCreateBundle.Request bundleRequest = DiaryConverter.toDiaryCreateBundleRequest(request);
         DiaryCreateBundle.Response bundleResponse = diaryService.create(bundleRequest);
 
-        DiaryCreateDto.Response response = diaryConverter.toDiaryResponse(bundleResponse);
+        DiaryCreateDto.Response response = DiaryConverter.toDiaryCreateDtoResponse(bundleResponse);
         return BaseResponse.of(ResponseMessage.DIARY_CREATE_SUCCESS, response);
     }
 
@@ -38,7 +37,7 @@ public class DiaryController {
         DiaryGetCountBundle.Response countBundleResponse = diaryService.getCount();
         DiaryFindAllBundle.Response diariesBundleResponse = diaryService.find();
 
-        DiaryFindAllDto.Response response = diaryConverter.toDiaryResponse(countBundleResponse, diariesBundleResponse);
+        DiaryFindAllDto.Response response = DiaryConverter.toDiaryFindAllDtoResponse(countBundleResponse, diariesBundleResponse);
         return BaseResponse.of(ResponseMessage.DIARIES_FIND_SUCCESS, response);
     }
 
@@ -48,17 +47,17 @@ public class DiaryController {
         DiaryFindBundle.Request bundleRequest = DiaryFindBundle.Request.of(id);
         DiaryFindBundle.Response bundleResponse = diaryService.find(bundleRequest);
 
-        DiaryFindDto.Response response = diaryConverter.toDiaryResponse(bundleResponse);
+        DiaryFindDto.Response response = DiaryConverter.toDiaryFindDtoResponse(bundleResponse);
         return BaseResponse.of(ResponseMessage.DIARY_FIND_SUCCESS, response);
     }
 
     @ApiOperation("Diary 수정")
     @PutMapping("/{id}")
     public ResponseEntity<BaseResponse<DiaryUpdateDto.Response>> update(@PathVariable Long id, @RequestBody DiaryUpdateDto.Request request) {
-        DiaryUpdateBundle.Request bundleRequest = diaryConverter.toDiaryUpdateBundleRequest(id, request);
+        DiaryUpdateBundle.Request bundleRequest = DiaryConverter.toDiaryUpdateBundleRequest(id, request);
         DiaryUpdateBundle.Response bundleResponse = diaryService.update(bundleRequest);
 
-        DiaryUpdateDto.Response response = diaryConverter.toDiaryResponse(bundleResponse);
+        DiaryUpdateDto.Response response = DiaryConverter.toDiaryUpdateDtoResponse(bundleResponse);
         return BaseResponse.of(ResponseMessage.DIARY_UPDATE_SUCCESS, response);
     }
 
@@ -68,7 +67,7 @@ public class DiaryController {
         DiaryUpdateStatusBundle.Request bundleRequest = DiaryUpdateStatusBundle.Request.of(id);
         DiaryUpdateStatusBundle.Response bundleResponse = diaryService.updateStatus(bundleRequest);
 
-        DiaryUpdateStatusDto.Response response = diaryConverter.toDiaryResponse(bundleResponse);
+        DiaryUpdateStatusDto.Response response = DiaryConverter.toDiaryUpdateStatusDtoResponse(bundleResponse);
         return BaseResponse.of(ResponseMessage.DIARY_UPDATE_STATUS_SUCCESS, response);
     }
 
@@ -78,7 +77,7 @@ public class DiaryController {
         DiaryDeleteBundle.Request bundleRequest = DiaryDeleteBundle.Request.of(id);
         DiaryDeleteBundle.Response bundleResponse = diaryService.delete(bundleRequest);
 
-        DiaryDeleteDto.Response response = diaryConverter.toDiaryResponse(bundleResponse);
+        DiaryDeleteDto.Response response = DiaryConverter.toDiaryDeleteDtoResponse(bundleResponse);
         return BaseResponse.of(ResponseMessage.DIARY_DELETE_SUCCESS, response);
     }
 }

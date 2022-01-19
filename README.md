@@ -25,9 +25,9 @@
 
 ## Diary 생성
 
-> POST http://localhost:8080/v1/diaries
+> POST http://localhost:8080/api/v1/diaries
 
-> Reqeuest
+> Request
 > ```json
 > {
 >   "author": "string",
@@ -55,7 +55,7 @@
 
 ## Diary 전체 조회
 
-> GET http://localhost:8080/v1/diaries
+> GET http://localhost:8080/api/v1/diaries
 
 > Response
 > ```json
@@ -80,9 +80,9 @@
 
 ## Diary 하나 조회
 
-> GET http://localhost:8080/v1/diaries/{id}
+> GET http://localhost:8080/api/v1/diaries/{id}
 
-> Reqeuest
+> Request
 > ```json
 > {
 >   "id": "number"
@@ -108,9 +108,9 @@
 
 ## Diary 수정
 
-> PUT http://localhost:8080/v1/diaries/{id}
+> PUT http://localhost:8080/api/v1/diaries/{id}
 
-> Reqeuest
+> Request
 > ```json
 > {
 >   "id": "number"
@@ -138,9 +138,9 @@
 
 ## Diary 상태 수정
 
-> PATCH http://localhost:8080/v1/diaries/{id}
+> PATCH http://localhost:8080/api/v1/diaries/{id}
 
-> Reqeuest
+> Request
 > ```json
 > {
 >   "id": "number"
@@ -169,9 +169,9 @@
 
 ## Diary 삭제
 
-> DELETE http://localhost:8080/v1/diaries/{id}
+> DELETE http://localhost:8080/api/v1/diaries/{id}
 
-> Reqeuest
+> Request
 > ```json
 > {
 >   "id": "number"

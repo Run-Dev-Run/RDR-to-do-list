@@ -1,22 +1,20 @@
 package com.rdr.diary.converter;
 
-import com.rdr.diary.dto.bundle.*;
 import com.rdr.diary.domain.Diary;
 import com.rdr.diary.dto.*;
-import org.springframework.stereotype.Component;
+import com.rdr.diary.dto.bundle.*;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryConverter {
-    private DiaryConverter() {
-    }
-
     /**
      * toEntity
      */
-    public Diary toDiary(DiaryCreateBundle.Request bundleRequest) {
+    public static Diary toDiary(DiaryCreateBundle.Request bundleRequest) {
         return Diary.builder()
                 .author(bundleRequest.getAuthor())
                 .title(bundleRequest.getTitle())
@@ -27,7 +25,7 @@ public class DiaryConverter {
     /**
      * toBundleRequest
      */
-    public DiaryCreateBundle.Request toDiaryCreateBundleRequest(DiaryCreateDto.Request request) {
+    public static DiaryCreateBundle.Request toDiaryCreateBundleRequest(DiaryCreateDto.Request request) {
         return DiaryCreateBundle.Request
                 .builder()
                 .author(request.getAuthor())
@@ -36,7 +34,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryUpdateBundle.Request toDiaryUpdateBundleRequest(Long id, DiaryUpdateDto.Request request) {
+    public static DiaryUpdateBundle.Request toDiaryUpdateBundleRequest(Long id, DiaryUpdateDto.Request request) {
         return DiaryUpdateBundle.Request
                 .builder()
                 .id(id)
@@ -48,7 +46,7 @@ public class DiaryConverter {
     /**
      * toBundleResponse
      */
-    public DiaryCreateBundle.Response toDiaryCreateBundleResponse(Diary diary) {
+    public static DiaryCreateBundle.Response toDiaryCreateBundleResponse(Diary diary) {
         return DiaryCreateBundle.Response
                 .builder()
                 .author(diary.getAuthor())
@@ -60,14 +58,14 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryFindAllBundle.Response toDiaryFindAllBundleResponse(List<Diary> diaries) {
+    public static DiaryFindAllBundle.Response toDiaryFindAllBundleResponse(List<Diary> diaries) {
         List<DiaryFindBundle.Response> diaryFindBundleResponses = diaries.stream()
-                .map(this::toDiaryFindBundleResponse)
+                .map(DiaryConverter::toDiaryFindBundleResponse)
                 .collect(Collectors.toList());
         return DiaryFindAllBundle.Response.of(diaryFindBundleResponses);
     }
 
-    public DiaryFindBundle.Response toDiaryFindBundleResponse(Diary diary) {
+    public static DiaryFindBundle.Response toDiaryFindBundleResponse(Diary diary) {
         return DiaryFindBundle.Response
                 .builder()
                 .author(diary.getAuthor())
@@ -79,7 +77,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryUpdateBundle.Response toDiaryUpdateBundleResponse(Diary diary) {
+    public static DiaryUpdateBundle.Response toDiaryUpdateBundleResponse(Diary diary) {
         return DiaryUpdateBundle.Response
                 .builder()
                 .author(diary.getAuthor())
@@ -91,7 +89,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryDeleteBundle.Response toDiaryDeleteBundleResponse(Diary diary) {
+    public static DiaryDeleteBundle.Response toDiaryDeleteBundleResponse(Diary diary) {
         return DiaryDeleteBundle.Response
                 .builder()
                 .author(diary.getAuthor())
@@ -103,7 +101,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryUpdateStatusBundle.Response toDiaryUpdateStatusBundleResponse(Diary diary) {
+    public static DiaryUpdateStatusBundle.Response toDiaryUpdateStatusBundleResponse(Diary diary) {
         return DiaryUpdateStatusBundle.Response
                 .builder()
                 .author(diary.getAuthor())
@@ -118,7 +116,7 @@ public class DiaryConverter {
     /**
      * toResponse
      */
-    public DiaryCreateDto.Response toDiaryResponse(DiaryCreateBundle.Response bundleResponse) {
+    public static DiaryCreateDto.Response toDiaryCreateDtoResponse(DiaryCreateBundle.Response bundleResponse) {
         return DiaryCreateDto.Response
                 .builder()
                 .author(bundleResponse.getAuthor())
@@ -130,15 +128,20 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryFindAllDto.Response toDiaryResponse(DiaryGetCountBundle.Response countBundleResponse, DiaryFindAllBundle.Response diariesBundleResponse) {
+    public static DiaryFindAllDto.Response toDiaryFindAllDtoResponse(DiaryGetCountBundle.Response countBundleResponse, DiaryFindAllBundle.Response diariesBundleResponse) {
+        List<DiaryFindDto.Response> diaryFindDtoResponses = diariesBundleResponse.getDiaryFindBundleResponses()
+                .stream()
+                .map(DiaryConverter::toDiaryFindDtoResponse)
+                .collect(Collectors.toList());
+
         return DiaryFindAllDto.Response
                 .builder()
                 .totalCount(countBundleResponse.getTotalCount())
-                .diaries(diariesBundleResponse.getDiaryFindBundleResponses())
+                .diaries(diaryFindDtoResponses)
                 .build();
     }
 
-    public DiaryFindDto.Response toDiaryResponse(DiaryFindBundle.Response bundleResponse) {
+    public static DiaryFindDto.Response toDiaryFindDtoResponse(DiaryFindBundle.Response bundleResponse) {
         return DiaryFindDto.Response
                 .builder()
                 .author(bundleResponse.getAuthor())
@@ -150,7 +153,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryUpdateDto.Response toDiaryResponse(DiaryUpdateBundle.Response bundleResponse) {
+    public static DiaryUpdateDto.Response toDiaryUpdateDtoResponse(DiaryUpdateBundle.Response bundleResponse) {
         return DiaryUpdateDto.Response
                 .builder()
                 .author(bundleResponse.getAuthor())
@@ -162,7 +165,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryUpdateStatusDto.Response toDiaryResponse(DiaryUpdateStatusBundle.Response bundleResponse) {
+    public static DiaryUpdateStatusDto.Response toDiaryUpdateStatusDtoResponse(DiaryUpdateStatusBundle.Response bundleResponse) {
         return DiaryUpdateStatusDto.Response
                 .builder()
                 .author(bundleResponse.getAuthor())
@@ -174,7 +177,7 @@ public class DiaryConverter {
                 .build();
     }
 
-    public DiaryDeleteDto.Response toDiaryResponse(DiaryDeleteBundle.Response bundleResponse) {
+    public static DiaryDeleteDto.Response toDiaryDeleteDtoResponse(DiaryDeleteBundle.Response bundleResponse) {
         return DiaryDeleteDto.Response
                 .builder()
                 .author(bundleResponse.getAuthor())
