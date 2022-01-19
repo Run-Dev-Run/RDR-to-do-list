@@ -1,17 +1,12 @@
 package com.rdr.diary.dto.bundle;
 
 import com.rdr.diary.domain.vo.Status;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryCreateBundle {
-    private DiaryCreateBundle() {
-    }
-
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Request {
@@ -20,7 +15,6 @@ public class DiaryCreateBundle {
         private final String content;
     }
 
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Response {

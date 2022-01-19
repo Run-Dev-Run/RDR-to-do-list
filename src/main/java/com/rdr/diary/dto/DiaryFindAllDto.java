@@ -1,17 +1,15 @@
 package com.rdr.diary.dto;
 
 import com.rdr.diary.dto.bundle.DiaryFindBundle;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryFindAllDto {
-    private DiaryFindAllDto() {
-    }
-
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Response {

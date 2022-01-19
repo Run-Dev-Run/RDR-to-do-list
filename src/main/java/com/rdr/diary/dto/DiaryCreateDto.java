@@ -2,17 +2,16 @@ package com.rdr.diary.dto;
 
 import com.rdr.diary.domain.vo.Status;
 import com.rdr.diary.utils.DiaryValidUtils;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryCreateDto {
-    private DiaryCreateDto() {
-    }
-
     @Getter
     public static class Request {
         @Pattern(regexp = DiaryValidUtils.Regexp.NAME, message = DiaryValidUtils.Message.NAME)
@@ -23,7 +22,6 @@ public class DiaryCreateDto {
         private String content;
     }
 
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Response {

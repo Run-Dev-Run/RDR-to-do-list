@@ -2,11 +2,14 @@ package com.rdr.diary.domain;
 
 import com.rdr.common.domain.BaseEntity;
 import com.rdr.diary.domain.vo.Status;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
 public class Diary extends BaseEntity {
@@ -27,9 +30,6 @@ public class Diary extends BaseEntity {
 
     @Column(name = "DIARY_CONTENT")
     private String content;
-
-    protected Diary() {
-    }
 
     @Builder
     private Diary(String author, String title, String content) {

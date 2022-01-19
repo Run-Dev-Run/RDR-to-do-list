@@ -1,17 +1,15 @@
 package com.rdr.diary.dto;
 
 import com.rdr.diary.domain.vo.Status;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryDeleteDto {
-    private DiaryDeleteDto() {
-    }
-
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Response {

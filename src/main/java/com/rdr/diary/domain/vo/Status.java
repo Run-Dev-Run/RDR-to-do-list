@@ -1,5 +1,9 @@
 package com.rdr.diary.domain.vo;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Status {
     TODO,
     DOING,
