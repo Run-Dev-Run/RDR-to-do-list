@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="debug">
+
+    <Properties>
+        <Property name="logLayout">
+            %d{Default} %highlight{[%-5p]}{FATAL=red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue}
+            %style{[%t]}{magenta} %style{[%C{3}]}{cyan} - %m%n%throwable
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console.log" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logLayout}" charset="UTF-8"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="console.log"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

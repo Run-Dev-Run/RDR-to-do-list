@@ -1,27 +1,20 @@
-package com.rdr.diary.bundle;
+package com.rdr.diary.dto.bundle;
 
 import com.rdr.diary.domain.vo.Status;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-public class DiaryDeleteBundle {
-    private DiaryDeleteBundle() {
-    }
-
-    @RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class DiaryCreateBundle {
+    @Builder
     @Getter
     public static class Request {
-        private final Long id;
-
-        public static Request of(Long id) {
-            return new Request(id);
-        }
+        private final String author;
+        private final String title;
+        private final String content;
     }
 
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Response {

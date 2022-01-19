@@ -1,8 +1,10 @@
 package com.rdr.common.dto;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+@RequiredArgsConstructor
 @Getter
 public enum ResponseMessage {
     /**
@@ -18,9 +20,4 @@ public enum ResponseMessage {
 
     private final String code;
     private final HttpStatus status;
-
-    ResponseMessage(String code, HttpStatus status) {
-        this.code = code;
-        this.status = status;
-    }
 }

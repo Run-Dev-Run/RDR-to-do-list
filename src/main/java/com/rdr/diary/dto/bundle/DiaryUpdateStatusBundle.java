@@ -1,16 +1,12 @@
-package com.rdr.diary.bundle;
+package com.rdr.diary.dto.bundle;
 
 import com.rdr.diary.domain.vo.Status;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryUpdateStatusBundle {
-    private DiaryUpdateStatusBundle() {
-    }
-
     @RequiredArgsConstructor
     @Getter
     public static class Request {
@@ -21,7 +17,6 @@ public class DiaryUpdateStatusBundle {
         }
     }
 
-    @RequiredArgsConstructor
     @Builder
     @Getter
     public static class Response {

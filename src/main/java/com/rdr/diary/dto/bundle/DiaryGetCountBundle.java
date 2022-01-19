@@ -1,12 +1,12 @@
-package com.rdr.diary.bundle;
+package com.rdr.diary.dto.bundle;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryGetCountBundle {
-    private DiaryGetCountBundle() {
-    }
-
     @RequiredArgsConstructor
     @Getter
     public static class Response {

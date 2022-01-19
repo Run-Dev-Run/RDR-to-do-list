@@ -1,6 +1,6 @@
 package com.rdr.diary.converter;
 
-import com.rdr.diary.bundle.*;
+import com.rdr.diary.dto.bundle.*;
 import com.rdr.diary.domain.Diary;
 import com.rdr.diary.dto.*;
 import org.springframework.stereotype.Component;
